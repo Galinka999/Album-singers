@@ -1,0 +1,533 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Open API documentation for project Album-singers",
+        "contact": {
+            "email": "galina@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8181/api",
+            "description": "Laravel Swagger API server"
+        }
+    ],
+    "paths": {
+        "/albums": {
+            "get": {
+                "tags": [
+                    "Albums"
+                ],
+                "summary": "Display a listing of the resource",
+                "operationId": "albumsAll",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "The page number",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Albums"
+                ],
+                "summary": "Create yet another album record",
+                "operationId": "albumCreate",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of key for storring",
+                                        "type": "string",
+                                        "example": "Example"
+                                    },
+                                    "singer_id": {
+                                        "description": "Name of key for storring",
+                                        "type": "integer",
+                                        "example": "5"
+                                    },
+                                    "year": {
+                                        "description": "Name of key for storring",
+                                        "type": "integer",
+                                        "example": "2022"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Created siccessful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "name": {
+                                            "description": "Name of key for storring",
+                                            "type": "string",
+                                            "example": "Example"
+                                        },
+                                        "singer": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SingerShowResource"
+                                            }
+                                        },
+                                        "year": {
+                                            "description": "Name of key for storring",
+                                            "type": "integer",
+                                            "example": "2022"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/albums/{id}": {
+            "patch": {
+                "tags": [
+                    "Albums"
+                ],
+                "summary": "Update yet another album record",
+                "operationId": "albumUpdate",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of album",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "2"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of key for storring",
+                                        "type": "string",
+                                        "example": "Example"
+                                    },
+                                    "singer_id": {
+                                        "description": "Name of key for storring",
+                                        "type": "integer",
+                                        "example": "5"
+                                    },
+                                    "year": {
+                                        "description": "Name of key for storring",
+                                        "type": "integer",
+                                        "example": "2022"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Created siccessful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "name": {
+                                            "description": "Name of key for storring",
+                                            "type": "string",
+                                            "example": "Example"
+                                        },
+                                        "singer": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SingerShowResource"
+                                            }
+                                        },
+                                        "year": {
+                                            "description": "Name of key for storring",
+                                            "type": "integer",
+                                            "example": "2022"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/singers": {
+            "get": {
+                "tags": [
+                    "Singers"
+                ],
+                "summary": "Display a listing of the resource",
+                "operationId": "singersAll",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "The page number",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Singers"
+                ],
+                "summary": "Create yet another singer record",
+                "operationId": "singerCreate",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of key for storring",
+                                        "type": "string",
+                                        "example": "Alex"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Created siccessful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SingerShowResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/singers/{id}": {
+            "patch": {
+                "tags": [
+                    "Singers"
+                ],
+                "summary": "Update yet another singer record",
+                "operationId": "singerUpdate",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of singer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "5"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of key for storring",
+                                        "type": "string",
+                                        "example": "Alex"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Created siccessful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SingerShowResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/songs": {
+            "get": {
+                "tags": [
+                    "Songs"
+                ],
+                "summary": "Display a listing of the resource",
+                "operationId": "songsAll",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "The page number",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Songs"
+                ],
+                "summary": "Create yet another song record",
+                "operationId": "songCreate",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of key for storring",
+                                        "type": "string",
+                                        "example": "Example"
+                                    },
+                                    "singer_id": {
+                                        "description": "Name of key for storring",
+                                        "type": "integer",
+                                        "example": "5"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Created siccessful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "name": {
+                                            "description": "Name of key for storring",
+                                            "type": "string",
+                                            "example": "Name of Song"
+                                        },
+                                        "singer": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SingerShowResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/songs/{id}": {
+            "patch": {
+                "tags": [
+                    "Songs"
+                ],
+                "summary": "Update yet another song record",
+                "operationId": "songUpdate",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of song",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "5"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of key for storring",
+                                        "type": "string",
+                                        "example": "Name of song"
+                                    },
+                                    "singer_id": {
+                                        "description": "Name of key for storring",
+                                        "type": "integer",
+                                        "example": "5"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Created siccessful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "name": {
+                                            "description": "Name of key for storring",
+                                            "type": "string",
+                                            "example": "Name of Song"
+                                        },
+                                        "singer": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SingerShowResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "SingerShowResource": {
+                "title": "Singer model",
+                "description": "Some simple request createa as example",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "5"
+                    },
+                    "name": {
+                        "description": "The name",
+                        "type": "string",
+                        "example": "Alex"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Albums",
+            "description": "API for Albums"
+        },
+        {
+            "name": "Singers",
+            "description": "API for Singers"
+        },
+        {
+            "name": "Songs",
+            "description": "API for Songs"
+        }
+    ]
+}
