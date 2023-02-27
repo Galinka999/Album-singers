@@ -1,14 +1,14 @@
 # Installation
 
+- git clone git@github.com:Galinka999/Album-singers.git .
 - cp .env.example .env  !!! IMPORTANT
-- настроить подключение к БД (PostgreSQL)
+- set up database connection (PostgreSQL)
+- composer install
 - docker compose build
 - docker compose up -d
-- composer install
-- composer update
-- php artisan key:gen
-- ./vendor/bin/sail migrate --seed
-- php artisan shop:install
+- ./vendor/bin/sail artisan migrate --seed
+- php artisan l5-swagger:generate
 
+Open Api documentation: http://localhost/api/documentation
 
 # Deploy

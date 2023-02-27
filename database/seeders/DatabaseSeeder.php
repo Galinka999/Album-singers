@@ -35,12 +35,17 @@ class DatabaseSeeder extends Seeder
                 'singer_id' => $albumOne[0]->singer_id,
             ]);
 
-        AlbumSongFactory::new()
-            ->sequence(
-                ['album_id' => $albumOne[0]->id,],
-                ['album_id' => $albumTwo[0]->id,]
-            )
-            ->count(9)->create();
+        for( $i = 1; $i < 6; $i++ ) {
+            AlbumSongFactory::new([
+                'song_id' => Song::query()->select('id')->find($i)->id,
+                'place' => $i,
+            ])
+                ->sequence(
+                    ['album_id' => $albumOne[0]->id,],
+                    ['album_id' => $albumTwo[0]->id,]
+                )
+                ->count(2)->create();
+        }
 
     }
 }
