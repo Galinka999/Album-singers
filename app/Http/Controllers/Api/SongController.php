@@ -120,6 +120,55 @@ class SongController extends Controller
         return new SongResource($song);
     }
 
+    /**
+     * @OA\Get(
+     *     path="/songs/{id}",
+     *     operationId="songsOne",
+     *     tags={"Songs"},
+     *     summary="Display a listing of the resource",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="The ID of song",
+     *         required=true,
+     *         example="5",
+     *         @OA\Schema(
+     *             type="integer",
+     *         ),
+     *     ),
+     *    @OA\Response(
+     *         response="200",
+     *         description="Created siccessful",
+     *                  @OA\JsonContent(
+     *                      @OA\Property(
+     *                          property="id",
+     *                          type="integer",
+     *                          example="5",
+     *                      ),
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string",
+     *                          description="Name of key for storring",
+     *                          example="Name of Song",
+     *                      ),
+     *                      @OA\Property(
+     *                          property="singer",
+     *                          type="array",
+     *                          @OA\Items(ref="#/components/schemas/SingerShowResource")
+     *                      )
+     *                  ),
+     *      ),
+     *     @OA\Response(
+     *         response="404",
+     *         description="Not found",
+     *     ),
+     * )
+     *
+     * Display a listing of the resource.
+     *
+     * @param Song $song
+     * @return SongResource
+     */
     public function show(Song $song): SongResource
     {
         return new SongResource($song);

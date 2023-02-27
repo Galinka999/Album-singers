@@ -121,6 +121,59 @@
             }
         },
         "/albums/{id}": {
+            "get": {
+                "tags": [
+                    "Albums"
+                ],
+                "summary": "Display a listing of the resource",
+                "operationId": "albumsOne",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of album",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Siccessful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "name": {
+                                            "description": "Name of key for storring",
+                                            "type": "string",
+                                            "example": "Example"
+                                        },
+                                        "singer": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SingerShowResource"
+                                            }
+                                        },
+                                        "year": {
+                                            "description": "Name of key for storring",
+                                            "type": "integer",
+                                            "example": "2022"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "patch": {
                 "tags": [
                     "Albums"
@@ -276,6 +329,40 @@
             }
         },
         "/singers/{id}": {
+            "get": {
+                "tags": [
+                    "Singers"
+                ],
+                "summary": "Display a listing of the resource",
+                "operationId": "singersOne",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of singer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "5"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SingerShowResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
             "patch": {
                 "tags": [
                     "Singers"
@@ -421,6 +508,57 @@
             }
         },
         "/songs/{id}": {
+            "get": {
+                "tags": [
+                    "Songs"
+                ],
+                "summary": "Display a listing of the resource",
+                "operationId": "songsOne",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of song",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "5"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created siccessful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "5"
+                                        },
+                                        "name": {
+                                            "description": "Name of key for storring",
+                                            "type": "string",
+                                            "example": "Name of Song"
+                                        },
+                                        "singer": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SingerShowResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
             "patch": {
                 "tags": [
                     "Songs"

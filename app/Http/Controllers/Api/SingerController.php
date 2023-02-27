@@ -98,6 +98,38 @@ class SingerController extends Controller
         return new SingerResource($singer);
     }
 
+    /**
+     * @OA\Get(
+     *     path="/singers/{id}",
+     *     operationId="singersOne",
+     *     tags={"Singers"},
+     *     summary="Display a listing of the resource",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="The ID of singer",
+     *         required=true,
+     *         example="5",
+     *         @OA\Schema(
+     *             type="integer",
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Successful operation",
+     *         @OA\JsonContent(ref="#/components/schemas/SingerShowResource")
+     *     ),
+     *      @OA\Response(
+     *         response="404",
+     *         description="Not found",
+     *     ),
+     * )
+     *
+     * Display a listing of the resource.
+     *
+     * @param Singer $singer
+     * @return SingerResource
+     */
     public function show(Singer $singer): SingerResource
     {
         return new SingerResource($singer);

@@ -135,6 +135,57 @@ class AlbumController extends Controller
         return new AlbumResource($album);
     }
 
+    /**
+     * @OA\Get(
+     *     path="/albums/{id}",
+     *     operationId="albumsOne",
+     *     tags={"Albums"},
+     *     summary="Display a listing of the resource",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="The ID of album",
+     *         required=true,
+     *         example="1",
+     *         @OA\Schema(
+     *             type="integer",
+     *         ),
+     *     ),
+     *      @OA\Response(
+     *         response="200",
+     *         description="Siccessful",
+     *                  @OA\JsonContent(
+     *                      @OA\Property(
+     *                          property="id",
+     *                          type="integer",
+     *                          example="1",
+     *                      ),
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string",
+     *                          description="Name of key for storring",
+     *                          example="Example",
+     *                      ),
+     *                      @OA\Property(
+     *                          property="singer",
+     *                          type="array",
+     *                          @OA\Items(ref="#/components/schemas/SingerShowResource")
+     *                      ),
+     *                      @OA\Property(
+     *                          property="year",
+     *                          type="integer",
+     *                          description="Name of key for storring",
+     *                          example="2022",
+     *                      )
+     *                  ),
+     *      ),
+     * )
+     *
+     * Display a listing of the resource.
+     *
+     * @param Album $album
+     * @return AlbumResource
+     */
     public function show(Album $album): AlbumResource
     {
         return new AlbumResource($album);
