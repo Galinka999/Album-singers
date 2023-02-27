@@ -10,6 +10,7 @@ use App\Http\Resources\AlbumResource;
 use App\Models\Album;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -44,14 +45,27 @@ class AlbumController extends Controller
     public function destroy(Album $album): Response|Application|ResponseFactory
     {
         $album->delete();
+
         return response(null, Response::HTTP_NO_CONTENT);
     }
 
-    public function storeSongList(AlbumAddSongRequest $request, Album $album)
+    public function storeSongList(AlbumAddSongRequest $request, Album $album): JsonResponse
     {
-        DB::transaction(function () use ($album, $request) {
-            $album->songs()->detach();
-            $album->songs()->attach($request->songs);
-        });
+        try {
+
+            DB::transaction(function () use ($album, $request) {
+                $album->songs()->detach();
+                $album->songs()->attach($request->songs);
+            });
+
+            return response()->json(['success' => true]);
+
+        } catch (\Throwable $e) {
+
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage(),
+            ]);
+        }
     }
 }
