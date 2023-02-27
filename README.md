@@ -7,7 +7,6 @@
 - docker compose build
 - docker compose up -d
 - ./vendor/bin/sail artisan migrate --seed
-- php artisan l5-swagger:generate
 
 Open Api documentation: http://localhost/api/documentation
 
