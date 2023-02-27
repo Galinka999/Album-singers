@@ -247,6 +247,33 @@ class SongController extends Controller
         return new SongResource($song);
     }
 
+    /**
+     * @OA\Delete(
+     *     path="/songs/{id}",
+     *     operationId="songsDelete",
+     *     tags={"Songs"},
+     *     summary="Delete song by ID",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="The ID of song",
+     *         required=true,
+     *         example="1",
+     *         @OA\Schema(
+     *             type="integer",
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response="204",
+     *         description="Deleted successful",
+     *     ),
+     * )
+     *
+     * Remove the specified resource from storage.
+     *
+     * @param Song $song
+     * @return Response|Application|ResponseFactory
+     */
     public function destroy(Song $song): Response|Application|ResponseFactory
     {
         $song->delete();

@@ -185,6 +185,33 @@ class SingerController extends Controller
         return new SingerResource($singer);
     }
 
+    /**
+     * @OA\Delete(
+     *     path="/singers/{id}",
+     *     operationId="singersDelete",
+     *     tags={"Singers"},
+     *     summary="Delete singer by ID",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="The ID of singer",
+     *         required=true,
+     *         example="1",
+     *         @OA\Schema(
+     *             type="integer",
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response="204",
+     *         description="Deleted successful",
+     *     ),
+     * )
+     *
+     * Remove the specified resource from storage.
+     *
+     * @param Singer $singer
+     * @return Response|Application|ResponseFactory
+     */
     public function destroy(Singer $singer): Response|Application|ResponseFactory
     {
         $singer->delete();

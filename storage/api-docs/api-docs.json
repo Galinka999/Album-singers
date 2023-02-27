@@ -174,6 +174,30 @@
                     }
                 }
             },
+            "delete": {
+                "tags": [
+                    "Albums"
+                ],
+                "summary": "Delete album by ID",
+                "operationId": "albumsDelete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of album",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    }
+                }
+            },
             "patch": {
                 "tags": [
                     "Albums"
@@ -360,6 +384,30 @@
                     },
                     "404": {
                         "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Singers"
+                ],
+                "summary": "Delete singer by ID",
+                "operationId": "singersDelete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of singer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
                     }
                 }
             },
@@ -556,6 +604,30 @@
                     },
                     "404": {
                         "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Songs"
+                ],
+                "summary": "Delete song by ID",
+                "operationId": "songsDelete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of song",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
                     }
                 }
             },

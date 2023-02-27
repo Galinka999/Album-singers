@@ -276,6 +276,33 @@ class AlbumController extends Controller
         return new AlbumResource($album);
     }
 
+    /**
+     * @OA\Delete(
+     *     path="/albums/{id}",
+     *     operationId="albumsDelete",
+     *     tags={"Albums"},
+     *     summary="Delete album by ID",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="The ID of album",
+     *         required=true,
+     *         example="1",
+     *         @OA\Schema(
+     *             type="integer",
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response="204",
+     *         description="Deleted successful",
+     *     ),
+     * )
+     *
+     * Remove the specified resource from storage.
+     *
+     * @param Album $album
+     * @return Response|Application|ResponseFactory
+     */
     public function destroy(Album $album): Response|Application|ResponseFactory
     {
         $album->delete();
