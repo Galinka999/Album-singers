@@ -69,13 +69,13 @@ class SongController extends Controller
      *              @OA\Property(
      *                  property="name",
      *                  type="string",
-     *                  description="Name of key for storring",
+     *                  description="Song name",
      *                  example="Example",
      *              ),
      *              @OA\Property(
      *                  property="singer_id",
      *                  type="integer",
-     *                  description="Name of key for storring",
+     *                  description="Singer ID",
      *                  example="5",
      *              ),
      *          )
@@ -92,7 +92,7 @@ class SongController extends Controller
      *                      @OA\Property(
      *                          property="name",
      *                          type="string",
-     *                          description="Name of key for storring",
+     *                          description="Song name",
      *                          example="Name of Song",
      *                      ),
      *                      @OA\Property(
@@ -196,13 +196,13 @@ class SongController extends Controller
      *              @OA\Property(
      *                  property="name",
      *                  type="string",
-     *                  description="Name of key for storring",
+     *                  description="Song name",
      *                  example="Name of song",
      *              ),
      *              @OA\Property(
      *                  property="singer_id",
      *                  type="integer",
-     *                  description="Name of key for storring",
+     *                  description="Singer ID",
      *                  example="5",
      *              ),
      *          )
@@ -219,7 +219,7 @@ class SongController extends Controller
      *                      @OA\Property(
      *                          property="name",
      *                          type="string",
-     *                          description="Name of key for storring",
+     *                          description="Song name",
      *                          example="Name of Song",
      *                      ),
      *                      @OA\Property(
@@ -231,7 +231,7 @@ class SongController extends Controller
      *      ),
      *     @OA\Response(
      *         response="404",
-     *         description="Not found",
+     *         description="Model not found",
      *     ),
      * )
      * Store a newly updated resource in storage.
@@ -266,6 +266,10 @@ class SongController extends Controller
      *     @OA\Response(
      *         response="204",
      *         description="Deleted successful",
+     *     ),
+     *     @OA\Response(
+     *         response="404",
+     *         description="Model not found",
      *     ),
      * )
      *

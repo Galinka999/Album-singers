@@ -5,15 +5,11 @@
         "contact": {
             "email": "galina@example.com"
         },
-        "license": {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-        },
         "version": "1.0.0"
     },
     "servers": [
         {
-            "url": "http://localhost:8181/api",
+            "url": "http://localhost/api",
             "description": "Laravel Swagger API server"
         }
     ],
@@ -61,17 +57,17 @@
                             "schema": {
                                 "properties": {
                                     "name": {
-                                        "description": "Name of key for storring",
+                                        "description": "Name album",
                                         "type": "string",
                                         "example": "Example"
                                     },
                                     "singer_id": {
-                                        "description": "Name of key for storring",
+                                        "description": "Id by singer",
                                         "type": "integer",
                                         "example": "5"
                                     },
                                     "year": {
-                                        "description": "Name of key for storring",
+                                        "description": "Year album",
                                         "type": "integer",
                                         "example": "2022"
                                     }
@@ -93,7 +89,7 @@
                                             "example": "1"
                                         },
                                         "name": {
-                                            "description": "Name of key for storring",
+                                            "description": "Name album",
                                             "type": "string",
                                             "example": "Example"
                                         },
@@ -104,7 +100,7 @@
                                             }
                                         },
                                         "year": {
-                                            "description": "Name of key for storring",
+                                            "description": "Year album",
                                             "type": "integer",
                                             "example": "2022"
                                         }
@@ -151,7 +147,7 @@
                                             "example": "1"
                                         },
                                         "name": {
-                                            "description": "Name of key for storring",
+                                            "description": "Album name",
                                             "type": "string",
                                             "example": "Example"
                                         },
@@ -162,7 +158,7 @@
                                             }
                                         },
                                         "year": {
-                                            "description": "Name of key for storring",
+                                            "description": "Album year",
                                             "type": "integer",
                                             "example": "2022"
                                         }
@@ -194,7 +190,13 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "No content"
+                        "description": "Deleted successful"
+                    },
+                    "404": {
+                        "description": "Model not found",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             },
@@ -223,17 +225,17 @@
                             "schema": {
                                 "properties": {
                                     "name": {
-                                        "description": "Name of key for storring",
+                                        "description": "Album name",
                                         "type": "string",
                                         "example": "Example"
                                     },
                                     "singer_id": {
-                                        "description": "Name of key for storring",
+                                        "description": "Singer ID",
                                         "type": "integer",
                                         "example": "5"
                                     },
                                     "year": {
-                                        "description": "Name of key for storring",
+                                        "description": "Album year",
                                         "type": "integer",
                                         "example": "2022"
                                     }
@@ -255,7 +257,7 @@
                                             "example": "1"
                                         },
                                         "name": {
-                                            "description": "Name of key for storring",
+                                            "description": "Album name",
                                             "type": "string",
                                             "example": "Example"
                                         },
@@ -266,7 +268,7 @@
                                             }
                                         },
                                         "year": {
-                                            "description": "Name of key for storring",
+                                            "description": "Album year",
                                             "type": "integer",
                                             "example": "2022"
                                         }
@@ -277,7 +279,72 @@
                         }
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Model not found"
+                    }
+                }
+            }
+        },
+        "/albums/{id}/storeSongList": {
+            "post": {
+                "tags": [
+                    "Albums"
+                ],
+                "summary": "Attach SongList",
+                "operationId": "storeSongList",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of album",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "2"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "songs": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "song_id": {
+                                                    "description": "Singer ID",
+                                                    "type": "integer",
+                                                    "example": "5"
+                                                },
+                                                "place": {
+                                                    "description": "Song place",
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "SongList attached siccessful",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Model not found",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -325,7 +392,7 @@
                             "schema": {
                                 "properties": {
                                     "name": {
-                                        "description": "Name of key for storring",
+                                        "description": "Singer name",
                                         "type": "string",
                                         "example": "Alex"
                                     }
@@ -347,7 +414,10 @@
                         }
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -383,7 +453,10 @@
                         }
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             },
@@ -407,7 +480,13 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "No content"
+                        "description": "Deleted successful"
+                    },
+                    "404": {
+                        "description": "Model not found",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             },
@@ -436,7 +515,7 @@
                             "schema": {
                                 "properties": {
                                     "name": {
-                                        "description": "Name of key for storring",
+                                        "description": "Singer name",
                                         "type": "string",
                                         "example": "Alex"
                                     }
@@ -458,7 +537,10 @@
                         }
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Model not found",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -506,12 +588,12 @@
                             "schema": {
                                 "properties": {
                                     "name": {
-                                        "description": "Name of key for storring",
+                                        "description": "Song name",
                                         "type": "string",
                                         "example": "Example"
                                     },
                                     "singer_id": {
-                                        "description": "Name of key for storring",
+                                        "description": "Singer ID",
                                         "type": "integer",
                                         "example": "5"
                                     }
@@ -533,7 +615,7 @@
                                             "example": "1"
                                         },
                                         "name": {
-                                            "description": "Name of key for storring",
+                                            "description": "Song name",
                                             "type": "string",
                                             "example": "Name of Song"
                                         },
@@ -627,7 +709,13 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "No content"
+                        "description": "Deleted successful"
+                    },
+                    "404": {
+                        "description": "Model not found",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             },
@@ -656,12 +744,12 @@
                             "schema": {
                                 "properties": {
                                     "name": {
-                                        "description": "Name of key for storring",
+                                        "description": "Song name",
                                         "type": "string",
                                         "example": "Name of song"
                                     },
                                     "singer_id": {
-                                        "description": "Name of key for storring",
+                                        "description": "Singer ID",
                                         "type": "integer",
                                         "example": "5"
                                     }
@@ -683,7 +771,7 @@
                                             "example": "1"
                                         },
                                         "name": {
-                                            "description": "Name of key for storring",
+                                            "description": "Song name",
                                             "type": "string",
                                             "example": "Name of Song"
                                         },
@@ -700,7 +788,7 @@
                         }
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Model not found"
                     }
                 }
             }

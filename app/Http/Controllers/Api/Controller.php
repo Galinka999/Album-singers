@@ -9,14 +9,10 @@ namespace App\Http\Controllers\Api;
  *     @OA\Contact(
  *         email="galina@example.com"
  *     ),
- *     @OA\License(
- *         name="Apache 2.0",
- *         url="http://www.apache.org/licenses/LICENSE-2.0.html"
- *     )
  * )
  * @OA\Server(
  *     description="Laravel Swagger API server",
- *     url="http://localhost:8181/api"
+ *     url="http://localhost/api"
  * )
  */
 class Controller extends \App\Http\Controllers\Controller

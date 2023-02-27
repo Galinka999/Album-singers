@@ -70,7 +70,7 @@ class SingerController extends Controller
      *              @OA\Property(
      *                  property="name",
      *                  type="string",
-     *                  description="Name of key for storring",
+     *                  description="Singer name",
      *                  example="Alex",
      *              )
      *          )
@@ -157,7 +157,7 @@ class SingerController extends Controller
      *              @OA\Property(
      *                  property="name",
      *                  type="string",
-     *                  description="Name of key for storring",
+     *                  description="Singer name",
      *                  example="Alex",
      *              )
      *          )
@@ -169,7 +169,7 @@ class SingerController extends Controller
      *     ),
      *     @OA\Response(
      *         response="404",
-     *         description="Not found",
+     *         description="Model not found",
      *     ),
      * )
      * Store a newly updated resource in storage.
@@ -204,6 +204,10 @@ class SingerController extends Controller
      *     @OA\Response(
      *         response="204",
      *         description="Deleted successful",
+     *     ),
+     *     @OA\Response(
+     *         response="404",
+     *         description="Model not found",
      *     ),
      * )
      *

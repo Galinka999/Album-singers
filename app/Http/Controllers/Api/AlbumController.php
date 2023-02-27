@@ -72,19 +72,19 @@ class AlbumController extends Controller
      *              @OA\Property(
      *                  property="name",
      *                  type="string",
-     *                  description="Name of key for storring",
+     *                  description="Name album",
      *                  example="Example",
      *              ),
      *              @OA\Property(
      *                  property="singer_id",
      *                  type="integer",
-     *                  description="Name of key for storring",
+     *                  description="Id by singer",
      *                  example="5",
      *              ),
      *              @OA\Property(
      *                  property="year",
      *                  type="integer",
-     *                  description="Name of key for storring",
+     *                  description="Year album",
      *                  example="2022",
      *              )
      *          )
@@ -101,7 +101,7 @@ class AlbumController extends Controller
      *                      @OA\Property(
      *                          property="name",
      *                          type="string",
-     *                          description="Name of key for storring",
+     *                          description="Name album",
      *                          example="Example",
      *                      ),
      *                      @OA\Property(
@@ -112,7 +112,7 @@ class AlbumController extends Controller
      *                      @OA\Property(
      *                          property="year",
      *                          type="integer",
-     *                          description="Name of key for storring",
+     *                          description="Year album",
      *                          example="2022",
      *                      )
      *                  ),
@@ -154,7 +154,7 @@ class AlbumController extends Controller
      *      @OA\Response(
      *         response="200",
      *         description="Siccessful",
-     *                  @OA\JsonContent(
+     *              @OA\JsonContent(
      *                      @OA\Property(
      *                          property="id",
      *                          type="integer",
@@ -163,7 +163,7 @@ class AlbumController extends Controller
      *                      @OA\Property(
      *                          property="name",
      *                          type="string",
-     *                          description="Name of key for storring",
+     *                          description="Album name",
      *                          example="Example",
      *                      ),
      *                      @OA\Property(
@@ -174,10 +174,10 @@ class AlbumController extends Controller
      *                      @OA\Property(
      *                          property="year",
      *                          type="integer",
-     *                          description="Name of key for storring",
+     *                          description="Album year",
      *                          example="2022",
      *                      )
-     *                  ),
+     *               ),
      *      ),
      * )
      *
@@ -213,19 +213,19 @@ class AlbumController extends Controller
      *              @OA\Property(
      *                  property="name",
      *                  type="string",
-     *                  description="Name of key for storring",
+     *                  description="Album name",
      *                  example="Example",
      *              ),
      *              @OA\Property(
      *                  property="singer_id",
      *                  type="integer",
-     *                  description="Name of key for storring",
+     *                  description="Singer ID",
      *                  example="5",
      *              ),
      *              @OA\Property(
      *                  property="year",
      *                  type="integer",
-     *                  description="Name of key for storring",
+     *                  description="Album year",
      *                  example="2022",
      *              )
      *          )
@@ -233,7 +233,7 @@ class AlbumController extends Controller
      *     @OA\Response(
      *         response="200",
      *         description="Created siccessful",
-     *                  @OA\JsonContent(
+     *               @OA\JsonContent(
      *                      @OA\Property(
      *                          property="id",
      *                          type="integer",
@@ -242,7 +242,7 @@ class AlbumController extends Controller
      *                      @OA\Property(
      *                          property="name",
      *                          type="string",
-     *                          description="Name of key for storring",
+     *                          description="Album name",
      *                          example="Example",
      *                      ),
      *                      @OA\Property(
@@ -253,14 +253,14 @@ class AlbumController extends Controller
      *                      @OA\Property(
      *                          property="year",
      *                          type="integer",
-     *                          description="Name of key for storring",
+     *                          description="Album year",
      *                          example="2022",
      *                      )
-     *                  ),
+     *               ),
      *      ),
      *     @OA\Response(
      *         response="404",
-     *         description="Not found",
+     *         description="Model not found",
      *     ),
      * )
      * Store a newly updated resource in storage.
@@ -296,6 +296,10 @@ class AlbumController extends Controller
      *         response="204",
      *         description="Deleted successful",
      *     ),
+     *     @OA\Response(
+     *         response="404",
+     *         description="Model not found",
+     *     ),
      * )
      *
      * Remove the specified resource from storage.
@@ -310,7 +314,66 @@ class AlbumController extends Controller
         return response(null, Response::HTTP_NO_CONTENT);
     }
 
-    public function storeSongList(AlbumAddSongRequest $request, Album $album): JsonResponse
+    /**
+     * @OA\Post (
+     *     path="/albums/{id}/storeSongList",
+     *     operationId="storeSongList",
+     *     tags={"Albums"},
+     *     summary="Attach SongList",
+     *      @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="The ID of album",
+     *         required=true,
+     *         example="2",
+     *         @OA\Schema(
+     *             type="integer",
+     *         ),
+     *     ),
+     *      @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *                  @OA\Property(
+     *                          property="songs",
+     *                          type="array",
+     *                          @OA\Items(
+     *                              @OA\Property(
+     *                                  property="song_id",
+     *                                  type="integer",
+     *                                  description="Singer ID",
+     *                                  example="5",
+     *                              ),
+     *                              @OA\Property(
+     *                                  property="place",
+     *                                  type="integer",
+     *                                  description="Song place",
+     *                                  example="1",
+     *                              )
+     *                          ),
+     *                  )
+     *          )
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="SongList attached siccessful",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *         )
+     *      ),
+     *     @OA\Response(
+     *         response="404",
+     *         description="Model not found",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *         )
+     *     ),
+     * )
+     *
+     * @param AlbumAddSongRequest $request
+     * @param Album $album
+     * @return JsonResponse
+     */
+    public function attachSongList(AlbumAddSongRequest $request, Album $album): JsonResponse
     {
         try {
 

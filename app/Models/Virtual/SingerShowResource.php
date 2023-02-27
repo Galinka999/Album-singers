@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Virtual;
+namespace App\Models\Virtual;
 /**
  * @OA\Schema(
  *     description="Some simple request createa as example",
