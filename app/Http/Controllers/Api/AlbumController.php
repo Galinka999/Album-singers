@@ -42,7 +42,7 @@ class AlbumController extends Controller
      *         description="Successful operation",
      *         @OA\MediaType(
      *             mediaType="application/json",
-     *         )
+     *         ),
      *     ),
      *     @OA\Response(
      *         response="404",
@@ -92,30 +92,7 @@ class AlbumController extends Controller
      *     @OA\Response(
      *         response="200",
      *         description="Created siccessful",
-     *                  @OA\JsonContent(
-     *                      @OA\Property(
-     *                          property="id",
-     *                          type="integer",
-     *                          example="1",
-     *                      ),
-     *                      @OA\Property(
-     *                          property="name",
-     *                          type="string",
-     *                          description="Name album",
-     *                          example="Example",
-     *                      ),
-     *                      @OA\Property(
-     *                          property="singer",
-     *                          type="array",
-     *                          @OA\Items(ref="#/components/schemas/SingerShowResource")
-     *                      ),
-     *                      @OA\Property(
-     *                          property="year",
-     *                          type="integer",
-     *                          description="Year album",
-     *                          example="2022",
-     *                      )
-     *                  ),
+     *         @OA\JsonContent(ref="#/components/schemas/AlbumResource")
      *      ),
      *     @OA\Response(
      *         response="404",
@@ -238,30 +215,7 @@ class AlbumController extends Controller
      *     @OA\Response(
      *         response="200",
      *         description="Created siccessful",
-     *               @OA\JsonContent(
-     *                      @OA\Property(
-     *                          property="id",
-     *                          type="integer",
-     *                          example="1",
-     *                      ),
-     *                      @OA\Property(
-     *                          property="name",
-     *                          type="string",
-     *                          description="Album name",
-     *                          example="Example",
-     *                      ),
-     *                      @OA\Property(
-     *                          property="singer",
-     *                          type="array",
-     *                          @OA\Items(ref="#/components/schemas/SingerShowResource")
-     *                      ),
-     *                      @OA\Property(
-     *                          property="year",
-     *                          type="integer",
-     *                          description="Album year",
-     *                          example="2022",
-     *                      )
-     *               ),
+     *         @OA\JsonContent(ref="#/components/schemas/AlbumResource")
      *      ),
      *     @OA\Response(
      *         response="404",
@@ -321,7 +275,7 @@ class AlbumController extends Controller
 
     /**
      * @OA\Post (
-     *     path="/albums/{id}/storeSongList",
+     *     path="/albums/{id}/attachSongList",
      *     operationId="storeSongList",
      *     tags={"Albums"},
      *     summary="Attach SongList",

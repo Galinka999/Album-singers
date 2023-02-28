@@ -83,29 +83,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "properties": {
-                                        "id": {
-                                            "type": "integer",
-                                            "example": "1"
-                                        },
-                                        "name": {
-                                            "description": "Name album",
-                                            "type": "string",
-                                            "example": "Example"
-                                        },
-                                        "singer": {
-                                            "type": "array",
-                                            "items": {
-                                                "$ref": "#/components/schemas/SingerShowResource"
-                                            }
-                                        },
-                                        "year": {
-                                            "description": "Year album",
-                                            "type": "integer",
-                                            "example": "2022"
-                                        }
-                                    },
-                                    "type": "object"
+                                    "$ref": "#/components/schemas/AlbumResource"
                                 }
                             }
                         }
@@ -251,29 +229,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "properties": {
-                                        "id": {
-                                            "type": "integer",
-                                            "example": "1"
-                                        },
-                                        "name": {
-                                            "description": "Album name",
-                                            "type": "string",
-                                            "example": "Example"
-                                        },
-                                        "singer": {
-                                            "type": "array",
-                                            "items": {
-                                                "$ref": "#/components/schemas/SingerShowResource"
-                                            }
-                                        },
-                                        "year": {
-                                            "description": "Album year",
-                                            "type": "integer",
-                                            "example": "2022"
-                                        }
-                                    },
-                                    "type": "object"
+                                    "$ref": "#/components/schemas/AlbumResource"
                                 }
                             }
                         }
@@ -284,7 +240,7 @@
                 }
             }
         },
-        "/albums/{id}/storeSongList": {
+        "/albums/{id}/attachSongList": {
             "post": {
                 "tags": [
                     "Albums"
@@ -730,6 +686,30 @@
     },
     "components": {
         "schemas": {
+            "AlbumResource": {
+                "title": "Model song",
+                "description": "Model song",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "name": {
+                        "description": "The name",
+                        "type": "string",
+                        "example": "One song"
+                    },
+                    "year": {
+                        "description": "Album year",
+                        "type": "integer",
+                        "example": "2022"
+                    },
+                    "singer": {
+                        "$ref": "#/components/schemas/SingerShowResource"
+                    }
+                },
+                "type": "object"
+            },
             "SingerShowResource": {
                 "title": "Model singer",
                 "description": "Model singer",
