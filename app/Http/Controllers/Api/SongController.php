@@ -83,24 +83,7 @@ class SongController extends Controller
      *     @OA\Response(
      *         response="200",
      *         description="Created siccessful",
-     *                  @OA\JsonContent(
-     *                      @OA\Property(
-     *                          property="id",
-     *                          type="integer",
-     *                          example="1",
-     *                      ),
-     *                      @OA\Property(
-     *                          property="name",
-     *                          type="string",
-     *                          description="Song name",
-     *                          example="Name of Song",
-     *                      ),
-     *                      @OA\Property(
-     *                          property="singer",
-     *                          type="array",
-     *                          @OA\Items(ref="#/components/schemas/SingerShowResource")
-     *                      )
-     *                  ),
+     *         @OA\JsonContent(ref="#/components/schemas/SongResource"),
      *      ),
      *     @OA\Response(
      *         response="404",
@@ -125,7 +108,7 @@ class SongController extends Controller
      *     path="/songs/{id}",
      *     operationId="songsOne",
      *     tags={"Songs"},
-     *     summary="Display a listing of the resource",
+     *     summary="Show one resource",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -139,24 +122,7 @@ class SongController extends Controller
      *    @OA\Response(
      *         response="200",
      *         description="Created siccessful",
-     *                  @OA\JsonContent(
-     *                      @OA\Property(
-     *                          property="id",
-     *                          type="integer",
-     *                          example="5",
-     *                      ),
-     *                      @OA\Property(
-     *                          property="name",
-     *                          type="string",
-     *                          description="Name of key for storring",
-     *                          example="Name of Song",
-     *                      ),
-     *                      @OA\Property(
-     *                          property="singer",
-     *                          type="array",
-     *                          @OA\Items(ref="#/components/schemas/SingerShowResource")
-     *                      )
-     *                  ),
+     *         @OA\JsonContent(ref="#/components/schemas/SongResource"),
      *      ),
      *     @OA\Response(
      *         response="404",
@@ -164,7 +130,7 @@ class SongController extends Controller
      *     ),
      * )
      *
-     * Display a listing of the resource.
+     * Show one resource.
      *
      * @param Song $song
      * @return SongResource
@@ -210,24 +176,7 @@ class SongController extends Controller
      *     @OA\Response(
      *         response="200",
      *         description="Created siccessful",
-     *                  @OA\JsonContent(
-     *                      @OA\Property(
-     *                          property="id",
-     *                          type="integer",
-     *                          example="1",
-     *                      ),
-     *                      @OA\Property(
-     *                          property="name",
-     *                          type="string",
-     *                          description="Song name",
-     *                          example="Name of Song",
-     *                      ),
-     *                      @OA\Property(
-     *                          property="singer",
-     *                          type="array",
-     *                          @OA\Items(ref="#/components/schemas/SingerShowResource")
-     *                      )
-     *                  ),
+     *         @OA\JsonContent(ref="#/components/schemas/SongResource"),
      *      ),
      *     @OA\Response(
      *         response="404",

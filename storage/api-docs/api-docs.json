@@ -121,7 +121,7 @@
                 "tags": [
                     "Albums"
                 ],
-                "summary": "Display a listing of the resource",
+                "summary": "Show one resource",
                 "operationId": "albumsOne",
                 "parameters": [
                     {
@@ -152,15 +152,18 @@
                                             "example": "Example"
                                         },
                                         "singer": {
-                                            "type": "array",
-                                            "items": {
-                                                "$ref": "#/components/schemas/SingerShowResource"
-                                            }
+                                            "type": "object"
                                         },
                                         "year": {
                                             "description": "Album year",
                                             "type": "integer",
                                             "example": "2022"
+                                        },
+                                        "songs": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SongShortResource"
+                                            }
                                         }
                                     },
                                     "type": "object"
@@ -193,10 +196,7 @@
                         "description": "Deleted successful"
                     },
                     "404": {
-                        "description": "Model not found",
-                        "content": {
-                            "application/json": {}
-                        }
+                        "description": "Model not found"
                     }
                 }
             },
@@ -414,10 +414,7 @@
                         }
                     },
                     "404": {
-                        "description": "Not found",
-                        "content": {
-                            "application/json": {}
-                        }
+                        "description": "Not found"
                     }
                 }
             }
@@ -427,7 +424,7 @@
                 "tags": [
                     "Singers"
                 ],
-                "summary": "Display a listing of the resource",
+                "summary": "Show one resource",
                 "operationId": "singersOne",
                 "parameters": [
                     {
@@ -453,10 +450,7 @@
                         }
                     },
                     "404": {
-                        "description": "Not found",
-                        "content": {
-                            "application/json": {}
-                        }
+                        "description": "Not found"
                     }
                 }
             },
@@ -483,10 +477,7 @@
                         "description": "Deleted successful"
                     },
                     "404": {
-                        "description": "Model not found",
-                        "content": {
-                            "application/json": {}
-                        }
+                        "description": "Model not found"
                     }
                 }
             },
@@ -537,10 +528,7 @@
                         }
                     },
                     "404": {
-                        "description": "Model not found",
-                        "content": {
-                            "application/json": {}
-                        }
+                        "description": "Model not found"
                     }
                 }
             }
@@ -609,24 +597,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "properties": {
-                                        "id": {
-                                            "type": "integer",
-                                            "example": "1"
-                                        },
-                                        "name": {
-                                            "description": "Song name",
-                                            "type": "string",
-                                            "example": "Name of Song"
-                                        },
-                                        "singer": {
-                                            "type": "array",
-                                            "items": {
-                                                "$ref": "#/components/schemas/SingerShowResource"
-                                            }
-                                        }
-                                    },
-                                    "type": "object"
+                                    "$ref": "#/components/schemas/SongResource"
                                 }
                             }
                         }
@@ -642,7 +613,7 @@
                 "tags": [
                     "Songs"
                 ],
-                "summary": "Display a listing of the resource",
+                "summary": "Show one resource",
                 "operationId": "songsOne",
                 "parameters": [
                     {
@@ -662,24 +633,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "properties": {
-                                        "id": {
-                                            "type": "integer",
-                                            "example": "5"
-                                        },
-                                        "name": {
-                                            "description": "Name of key for storring",
-                                            "type": "string",
-                                            "example": "Name of Song"
-                                        },
-                                        "singer": {
-                                            "type": "array",
-                                            "items": {
-                                                "$ref": "#/components/schemas/SingerShowResource"
-                                            }
-                                        }
-                                    },
-                                    "type": "object"
+                                    "$ref": "#/components/schemas/SongResource"
                                 }
                             }
                         }
@@ -712,10 +666,7 @@
                         "description": "Deleted successful"
                     },
                     "404": {
-                        "description": "Model not found",
-                        "content": {
-                            "application/json": {}
-                        }
+                        "description": "Model not found"
                     }
                 }
             },
@@ -765,24 +716,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "properties": {
-                                        "id": {
-                                            "type": "integer",
-                                            "example": "1"
-                                        },
-                                        "name": {
-                                            "description": "Song name",
-                                            "type": "string",
-                                            "example": "Name of Song"
-                                        },
-                                        "singer": {
-                                            "type": "array",
-                                            "items": {
-                                                "$ref": "#/components/schemas/SingerShowResource"
-                                            }
-                                        }
-                                    },
-                                    "type": "object"
+                                    "$ref": "#/components/schemas/SongResource"
                                 }
                             }
                         }
@@ -797,8 +731,8 @@
     "components": {
         "schemas": {
             "SingerShowResource": {
-                "title": "Singer model",
-                "description": "Some simple request createa as example",
+                "title": "Model singer",
+                "description": "Model singer",
                 "properties": {
                     "id": {
                         "type": "integer",
@@ -808,6 +742,41 @@
                         "description": "The name",
                         "type": "string",
                         "example": "Alex"
+                    }
+                },
+                "type": "object"
+            },
+            "SongResource": {
+                "title": "Model song",
+                "description": "Model song",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "name": {
+                        "description": "The name",
+                        "type": "string",
+                        "example": "One song"
+                    },
+                    "singer": {
+                        "$ref": "#/components/schemas/SingerShowResource"
+                    }
+                },
+                "type": "object"
+            },
+            "SongShortResource": {
+                "title": "Model song",
+                "description": "Model song",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "name": {
+                        "description": "The name",
+                        "type": "string",
+                        "example": "One song"
                     }
                 },
                 "type": "object"

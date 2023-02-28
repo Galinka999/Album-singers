@@ -103,7 +103,7 @@ class SingerController extends Controller
      *     path="/singers/{id}",
      *     operationId="singersOne",
      *     tags={"Singers"},
-     *     summary="Display a listing of the resource",
+     *     summary="Show one resource",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -125,7 +125,7 @@ class SingerController extends Controller
      *     ),
      * )
      *
-     * Display a listing of the resource.
+     * Show one resource.
      *
      * @param Singer $singer
      * @return SingerResource
