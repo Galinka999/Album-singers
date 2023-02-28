@@ -687,8 +687,8 @@
     "components": {
         "schemas": {
             "AlbumResource": {
-                "title": "Model song",
-                "description": "Model song",
+                "title": "Model album",
+                "description": "Model album",
                 "properties": {
                     "id": {
                         "type": "integer",
@@ -746,8 +746,8 @@
                 "type": "object"
             },
             "SongShortResource": {
-                "title": "Model song",
-                "description": "Model song",
+                "title": "Short model Song",
+                "description": "Short model Song",
                 "properties": {
                     "id": {
                         "type": "integer",

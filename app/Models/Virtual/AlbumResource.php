@@ -3,9 +3,9 @@
 namespace App\Models\Virtual;
 /**
  * @OA\Schema(
- *     description="Model song",
+ *     description="Model album",
  *     type="object",
- *     title="Model song",
+ *     title="Model album",
  * )
  */
 
