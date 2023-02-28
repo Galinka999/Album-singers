@@ -140,7 +140,7 @@ class AlbumController extends Controller
      *     path="/albums/{id}",
      *     operationId="albumsOne",
      *     tags={"Albums"},
-     *     summary="Display a listing of the resource",
+     *     summary="Show one resource",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -168,27 +168,32 @@ class AlbumController extends Controller
      *                      ),
      *                      @OA\Property(
      *                          property="singer",
-     *                          type="array",
-     *                          @OA\Items(ref="#/components/schemas/SingerShowResource")
+     *                          type="object",
+     *                          @OA\Schema (ref="#/components/schemas/SingerShowResource")
      *                      ),
      *                      @OA\Property(
      *                          property="year",
      *                          type="integer",
      *                          description="Album year",
      *                          example="2022",
-     *                      )
+     *                      ),
+     *                      @OA\Property(
+     *                          property="songs",
+     *                          type="array",
+     *                          @OA\Items(ref="#/components/schemas/SongShortResource")
+     *                      ),
      *               ),
      *      ),
      * )
      *
-     * Display a listing of the resource.
+     * Show one resource.
      *
      * @param Album $album
      * @return AlbumResource
      */
     public function show(Album $album): AlbumResource
     {
-        return new AlbumResource($album);
+        return new AlbumResource($album->load('singer', 'songs'));
     }
 
     /**
